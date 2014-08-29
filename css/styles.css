@@ -1,0 +1,21 @@
+body {
+	padding-top: 70px;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+	display: none !important;
+}
+
+.table {
+    margin-bottom: 0px;
+	font-size: 14px;
+}
+
+.table thead tr th {
+    cursor: pointer;
+    color: #555555;
+}
+
+span.glyphicon {
+    font-size: 0.9em;
+}

@@ -1,0 +1,88 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Angular-Table Demo</title>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/styles.css">
+
+	</head>
+	<body>
+		<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="javascript:void(0);">Angular-Table</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="container" ng-app="demoapp">
+			<div ng-controller="DemoCtrl" ng-cloak>
+				<div class="row">
+					<div class="col-md-12">
+						<form>
+							<div class="form-inline">
+								<div class="input-group">
+									<input class="input-medium form-control" ng-model="table.filterText" placeholder="Search..." />
+									<span class="input-group-btn">
+										<button type="submit" class="btn btn-primary" ng-click="table.search(table.filterText)">
+											<span class="glyphicon glyphicon-search"></span> Search
+										</button>
+										<button type="button" class="btn btn-grey" ng-click="table.search('')">
+											<span class="glyphicon glyphicon-ban-circle"></span> Reset
+										</button>
+									</span>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="table-responsive" ng-show="table.filteredItems.length">
+							<table class="table table-condensed table-striped table-hover">
+								<thead>
+									<tr>
+										<th ng-click="table.sortBy('name')">
+											<span>Name</span> <span ng-class="table.selectedCls('name')"></span>
+										</th>
+										<th ng-click="table.sortBy('email')">
+											<span>Email</span> <span ng-class="table.selectedCls('email')"></span>
+										</th>
+										<th ng-click="table.sortBy('birthdate')">
+											<span>Birthdate</span> <span ng-class="table.selectedCls('birthdate')"></span>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="item in table.pagedItems[table.currentPage]">
+										<td>{{item.name}}</td>
+										<td>{{item.email}}</td>
+										<td>{{item.birthdate | date:'yyyy-MM-dd'}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div ng-hide="table.filteredItems.length">
+							No items to display
+						</div>
+						<div table-paging="table"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+
+		<script src="js/app/app.js"></script>
+		<script src="js/app/controllers.js"></script>
+		<script src="js/app/directives.js"></script>
+		<script src="js/app/factories.js"></script>
+		<script src="js/app/services.js"></script>
+	</body>
+</html>
