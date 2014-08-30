@@ -5,29 +5,27 @@ Simple and clean AngularJS Table with Sorting, Filtering and Paging
 
 Demo: http://remakelabs.github.io/angular-table/
 
-##### Sample Usage
+#### Sample Usage
 Create a service and a directive using the angular-table.js code (angularTable and tablePaging).
 Please note that the service has a dependency on Lo-Dash, which can easily be replaced.
 
 Inject the service in the controller, then invoke the createClient function passing on the scope object that will hold the instance of the table and its data.
-
 ```javascript
 angular.module('myapp', [])
-    .controller('AppCtrl', ['$scope', 'api', '**angularTable**', function ($scope, api, angularTable) {
+    .controller('AppCtrl', ['$scope', 'api', 'angularTable', function ($scope, api, angularTable) {
         $scope.items = []; // Holds table data
         $scope.table = {}; // Object that will hold an instance of angular-table
 
         (function init() {
             api.getData(function (data) {
                 $scope.items = data;
-                **angularTable.createClient($scope.table, $scope.items, 5).load();**
+                angularTable.createClient($scope.table, $scope.items, 5).load();
             });
         }());
     }]);
 ```
 
 On the the html page define your bindings and paging directive.
-
 ```html
 <table class="table table-condensed table-striped table-hover">
     <thead>
@@ -51,7 +49,6 @@ On the the html page define your bindings and paging directive.
 ```
 
 You can also specify an input field that will work as a filter on the table data.
-
 ```html
 <form>
     <div class="form-inline">
