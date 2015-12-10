@@ -3,7 +3,7 @@ angular-table
 
 Simple and clean AngularJS Table with Sorting, Filtering and Paging
 
-Demo: http://remakelabs.github.io/angular-table/
+Demo: http://rjmreis.github.io/angular-table/
 
 #### Sample Usage
 Create a service and a directive using the angular-table.js code (angularTable and tablePaging).
