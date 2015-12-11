@@ -97,11 +97,9 @@ angular.module('demoapp.services', [])
                     return 'glyphicon glyphicon-sort';
                 }
             };
-
-            $scope.search = function (searchText) {
-                if (_.isEmpty(searchText)) {
-                    $scope.filterText = '';
-                }
+            
+            $scope.search = function (val) {
+                $scope.filterText = val;
                 $scope.load();
             };
         }
