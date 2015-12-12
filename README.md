@@ -15,6 +15,16 @@ angular.module('myapp', [])
     .controller('AppCtrl', ['$scope', 'api', 'angularTable', function ($scope, api, angularTable) {
         $scope.items = []; // Holds table data
         $scope.table = {}; // Object that will hold an instance of angular-table
+        $scope.filterText = '';
+        
+        $scope.reset = function () {
+            $scope.filterText = '';
+        };
+        
+        // Watches
+        $scope.$watch('filterText', function(val) {
+            $scope.table.search(val);
+        });
 
         (function init() {
             api.getData(function (data) {
@@ -53,12 +63,9 @@ You can also specify an input field that will work as a filter on the table data
 <form>
     <div class="form-inline">
         <div class="input-group">
-            <input class="input-medium form-control" ng-model="table.filterText" placeholder="Search..." />
+            <input class="input-medium form-control" ng-model="filterText" placeholder="Search..." />
             <span class="input-group-btn">
-                <button type="submit" class="btn btn-primary" ng-click="table.search(table.filterText)">
-                    <span class="glyphicon glyphicon-search"></span> Search
-                </button>
-                <button type="button" class="btn btn-grey" ng-click="table.search('')">
+                <button type="button" class="btn btn-grey" ng-click="reset()">
                     <span class="glyphicon glyphicon-ban-circle"></span> Reset
                 </button>
             </span>
